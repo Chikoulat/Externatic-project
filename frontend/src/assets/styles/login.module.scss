@@ -1,0 +1,104 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.h3 {
+  font: 400% jost;
+  color: #161a30;
+  text-align: center;
+  margin-top: 1em;
+  @media (max-width: 768px) {
+    font: 200% jost;
+  }
+}
+
+.profileconnexion {
+  border: solid 0.25em;
+  border-radius: 0.75em;
+  padding: 0 8em;
+  margin: 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+  background-color: #e0e0e0;
+
+  @media (max-width: 768px) {
+    padding: 0;
+    gap: 0;
+  }
+}
+
+.loginPicture {
+  max-width: 100%;
+  border-radius: 0.5em;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.connexion {
+  font: 150% jost;
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+  text-align: center;
+  margin-bottom: 3em;
+
+  @media (max-width: 900px) {
+    font: 100% jost;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    text-align: center;
+    margin: 0;
+  }
+}
+
+.input {
+  font: 100% jost;
+  background-color: var(--gray-2);
+  color: var(--gray-1);
+  border-style: none;
+  border-radius: 0.4em;
+  margin: 1em;
+  padding: 0.6em;
+}
+
+.buttonspace {
+  font: 100% jost;
+  background-color: var(--secondary);
+  color: var(--gray-2);
+  border-style: none;
+  border-radius: 0.4em;
+  width: 8em;
+  height: 2em;
+  margin: 1em 0;
+
+  @media (max-width: 768px) {
+    width: 6em;
+    height: 2em;
+  }
+}
+
+.showPassword {
+  border-style: none;
+  background-color: transparent;
+  width: 2em;
+  padding-top: 0.5em;
+}
+
+.password {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+.email {
+  margin-right: 3em;
+}
