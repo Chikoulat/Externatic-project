@@ -1,0 +1,99 @@
+$box-shadow: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
+$box-shadowMB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
+$box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
+
+@import url("https://fonts.googleapis.com/css2?family=Jost");
+* {
+  font-family: "Jost";
+}
+
+.detailledOffer {
+  width: 90%;
+  min-height: 50vh;
+  border: 2px solid;
+  border-radius: 1rem;
+  padding: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: $box-shadow;
+  -webkit-box-shadow: $box-shadowWB;
+  -moz-box-shadow: $box-shadowMB;
+  margin: 2rem;
+  text-align: center;
+  img {
+    max-width: 600px;
+    max-height: 400px;
+  }
+  @media (max-width: 900px) or (max-height: 810px) {
+    img {
+      max-width: 100%;
+      max-height: 400px;
+    }
+    iframe {
+      max-width: 100%;
+      max-height: 400px;
+      border-radius: 1rem;
+    }
+  }
+  .visualize {
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all 50ms ease-in-out;
+    margin-bottom: 2rem;
+    &:hover {
+      font-weight: bold;
+    }
+  }
+  img {
+    padding: 2;
+    margin: 2rem 0;
+  }
+  .smallInformations {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 3vh 8vw;
+    gap: 20px;
+    p {
+      margin: 1.5vh 1.5vw;
+    }
+  }
+}
+.blank {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.blur {
+  filter: blur(4px);
+}
+.iblur {
+  filter: blur(8px);
+}
+
+.applyButton {
+  font: 100% jost;
+  background-color: var(--secondary);
+  color: var(--gray-2);
+  border-style: none;
+  border-radius: 0.4em;
+  padding: 0.8em 1em;
+  display: flex;
+  align-items: center;
+  margin: 1em;
+
+  @media (max-width: 768px) {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+  }
+}
