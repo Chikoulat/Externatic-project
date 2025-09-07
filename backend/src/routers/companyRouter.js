@@ -4,7 +4,7 @@ const router = express.Router();
 
 const { read, edit, add, remove } = require("../controllers/companyController");
 
-const { verifyToken } = require("../middlewares/hashPassword");
+const { verifyToken } = require("../middlewares/verifyToken");
 
 // GET
 router.get("/", verifyToken, read);

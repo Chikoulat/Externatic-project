@@ -6,11 +6,10 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
-import hide from "../assets/images/hide.png";
-import show from "../assets/images/show.png";
-import success from "../assets/images/success.png";
+import hide from "../../../assets/images/hide.png";
+import show from "../../../assets/images/show.png";
+import success from "../../../assets/images/success.png";
 import style from "./inscriptionEntreprise.module.scss";
-import signUpCompany from "../assets/images/signUpCompany.jpg";
 
 export default function InscriptionEntreprise() {
   const navigate = useNavigate();
@@ -33,7 +32,6 @@ export default function InscriptionEntreprise() {
   });
 
   const options = { multi: true };
-  passwordRef.current = watch("password", "");
 
   const onSubmit = async (data) => {
     try {
@@ -140,9 +138,9 @@ export default function InscriptionEntreprise() {
                     className={`${style.showPassword}`}
                   >
                     {showPassword ? (
-                      <img src={show} alt="show" />
+                      <img src={show} alt="show" className={`${style.lock}`} />
                     ) : (
-                      <img src={hide} alt="hide" />
+                      <img src={hide} alt="hide" className={`${style.lock}`} />
                     )}
                   </button>
                 </div>
@@ -166,7 +164,8 @@ export default function InscriptionEntreprise() {
                   {errors.confirmPassword?.message}
                 </span>
               )}
-
+            </div>
+            <div>
               <p className={`${style.p}`}>Site internet :</p>
               <input
                 className={`${style.input}`}
@@ -197,8 +196,6 @@ export default function InscriptionEntreprise() {
                   {errors.contactNumber?.message}
                 </span>
               )}
-            </div>
-            <div>
               <p className={`${style.p}`}>Ville :</p>
               <input
                 className={`${style.input}`}
@@ -235,7 +232,8 @@ export default function InscriptionEntreprise() {
               {errors.country && (
                 <span className="text-red-500">{errors.country?.message}</span>
               )}
-
+            </div>
+            <div>
               <p className={`${style.p}`}>N° SIRET :</p>
               <input
                 className={`${style.input}`}
@@ -285,91 +283,82 @@ export default function InscriptionEntreprise() {
               {errors.sector && (
                 <span className="text-red-500">{errors.sector?.message}</span>
               )}
+              <div className={`${style.notification}`}>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="smsNotification"
+                    {...register("smsNotificationActive")}
+                  />
+                  <label htmlFor="smsNotification" id="smsNotification">
+                    Notifications SMS
+                  </label>
+                </div>
 
-              <p className={`${style.p}`}>Description:</p>
-              <textarea
-                className={`${style.inputArea}`}
-                type="text"
-                placeholder="Entrez une description"
-                {...register("description", {
-                  minLength: { value: 100, message: "Au moins 100 caractères" },
-                  required: "Ce champs est obligatoire",
-                })}
-              />
-              {errors.description && (
-                <span className="text-red-500">
-                  {errors.description?.message}
-                </span>
-              )}
+                <div>
+                  <input
+                    type="checkbox"
+                    id="emailNotification"
+                    {...register("emailNotificationActive")}
+                  />
+                  <label htmlFor="emailNotification" id="emailNotification">
+                    Notification E-mail
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className={`${style.notification}`}>
-          <div>
-            <label htmlFor="smsNotification" id="smsNotification">
-              Notifications SMS :
-            </label>
-            <input
-              type="checkbox"
-              id="smsNotification"
-              {...register("smsNotificationActive")}
+        <div className={`${style.description}`}>
+          <p className={`${style.p}`}>Description:</p>
+          <textarea
+            className={`${style.inputArea}`}
+            type="text"
+            placeholder="Entrez une description"
+            {...register("description", {
+              minLength: { value: 100, message: "Au moins 100 caractères" },
+              required: "Ce champs est obligatoire",
+            })}
+          />
+          {errors.description && (
+            <span className="text-red-500">{errors.description?.message}</span>
+          )}
+        </div>
+        <div className={`${style.divButton}`}>
+          <UploadButton
+            uploader={uploader}
+            options={options}
+            onComplete={(image) => {
+              const urls = image.map((x) => x.fileUrl).join("\n");
+
+              setValue("image", urls);
+              setFileUrls(urls);
+            }}
+          >
+            {({ onClick }) => (
+              <button
+                className={`${style.companyButton}`}
+                type="button"
+                onClick={onClick}
+              >
+                Photo de profil
+              </button>
+            )}
+          </UploadButton>
+          {fileUrls ? (
+            <img
+              src={success}
+              alt="success"
+              className={`${style.checkPicture}`}
             />
-          </div>
+          ) : null}
 
-          <div>
-            <label htmlFor="emailNotification" id="emailNotification">
-              Notification E-mail :
-            </label>
-            <input
-              type="checkbox"
-              id="emailNotification"
-              {...register("emailNotificationActive")}
-            />
-          </div>
-
-          <div className={`${style.divButton}`}>
-            <UploadButton
-              uploader={uploader}
-              options={options}
-              onComplete={(image) => {
-                const urls = image.map((x) => x.fileUrl).join("\n");
-
-                setValue("image", urls);
-                setFileUrls(urls);
-              }}
-            >
-              {({ onClick }) => (
-                <button
-                  className={`${style.companyButton}`}
-                  type="button"
-                  onClick={onClick}
-                >
-                  Photo de profil
-                </button>
-              )}
-            </UploadButton>
-            {fileUrls ? (
-              <img
-                src={success}
-                alt="success"
-                className={`${style.checkPicture}`}
-              />
-            ) : null}
-
-            <button type="submit" className={`${style.companyButton}`}>
-              Inscription
-            </button>
-          </div>
-        </section>
+          <button type="submit" className={`${style.companyButton}`}>
+            Inscription
+          </button>
+        </div>
       </form>
-      <div className={`${style.divImage}`}>
-        <img
-          src={signUpCompany}
-          alt="Company"
-          className={`${style.imageSignup}`}
-        />
-      </div>
     </div>
   );
 }

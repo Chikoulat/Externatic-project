@@ -1,5 +1,6 @@
 .jobOffersContainer {
-  max-width: 1130px;
+  background-color: rgba(23,101,213,0.09);
+
   width: 100%;
   margin: auto;
   h1 {
@@ -10,8 +11,8 @@
 }
 .jobOffers {
   display: grid;
-  grid-template-columns: repeat(3, 350px);
-  grid-auto-columns: repeat(3, 350px);
+  grid-template-columns: repeat(5, 250px);
+  grid-auto-columns: repeat(3, 250px);
   gap: 20px;
   place-content: center;
 }
@@ -25,5 +26,58 @@
   .jobOffers {
     display: flex;
     flex-direction: column;
+  }
+}
+
+$box-shadow: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
+$box-shadowMB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
+$box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
+
+.jobOffer {
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.imgContainer {
+  height: 59%;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    transition: 1s transform;
+  }
+}
+.jobOfferTitle {
+  height: 168px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--gray-2);
+  background-color: #ca2061;
+  border-bottom-right-radius: .2rem;
+  border-bottom-left-radius: .2rem;
+  h3 {
+    margin-top: 10px;
+  }
+  i {
+    font-size: 20px;
+  }
+  p {
+    margin: 1rem;
+  }
+  a {
+    text-decoration: underline;
+    width: fit-content;
+    border-radius: 0.5rem;
+    padding: 0 5px;
+    color: black;
+    &:hover {
+      color: white;
+    }
   }
 }

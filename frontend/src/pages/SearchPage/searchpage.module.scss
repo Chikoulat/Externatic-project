@@ -4,26 +4,25 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
 
 @import url("https://fonts.googleapis.com/css2?family=Jost");
 * {
-  font-family: "Jost";
+  font-family: "Jost", serif;
 }
+
 @media (min-width: 768px) {
   .results {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    margin: auto;
     max-height: 60vh;
     display: flex;
     flex-direction: row;
     text-align: center;
-
-    margin: 1rem;
+    padding: 0 2.5rem;
     margin-bottom: 5rem;
     min-height: fit-content;
+
     .filters {
-      min-height: 50vh;
-      height: 28em;
+      height: auto;
       width: fit-content;
       display: flex;
       flex-direction: column;
@@ -31,24 +30,26 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
       justify-content: flex-start;
       justify-items: center;
       border: 2px solid var(--secondary);
-      border-radius: 1rem;
-      -moz-box-shadow: $box-shadowMB;
-      -webkit-box-shadow: $box-shadowWB;
-      box-shadow: $box-shadow;
+      border-radius: .5rem;
+
       .title {
         width: 100%;
-        margin: 2vh 0rem;
+        margin: 2vh 0;
       }
+
       .form {
         display: flex;
         flex-direction: column;
         margin: 2vh 1vw 1vh 1vw;
+
         label {
           margin-top: 1rem;
         }
+
         label:first-child {
           margin-top: 0;
         }
+
         input,
         select {
           background-color: #f0f0f0a6;
@@ -60,71 +61,73 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
           -webkit-box-shadow: $box-shadowWB;
           box-shadow: $box-shadow;
         }
+
         input[type="range"] {
           padding: 0;
           box-shadow: none;
           margin: 0 0 0 1vw;
         }
+
         select {
           -moz-box-shadow: $box-shadowMB;
           -webkit-box-shadow: $box-shadowWB;
           box-shadow: $box-shadow;
         }
+
         .city {
           display: flex;
           flex-direction: column;
         }
+
         .salary {
           display: flex;
           flex-direction: column;
         }
+
         .jobPlace {
           align-self: center;
           margin-top: 3vh;
         }
+
         .Rsalary {
           margin-top: 0;
         }
       }
+
       select:last-child {
         display: flex;
         justify-items: center;
       }
+
       .buttons {
         margin: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
       }
+
       button {
         display: flex;
         width: fit-content;
-        border: 1px solid;
-        border-radius: 0.5rem;
+        border: 1px solid var(--secondary);
+        border-radius: .3em;
         margin: 1vh 0 1vh 0;
-        box-shadow: $box-shadow;
-        background: white;
-        -webkit-box-shadow: $box-shadowWB;
-        -moz-box-shadow: $box-shadowMB;
+        background-color: white;
+
       }
     }
+
     .offers {
       border: 2px solid var(--secondary);
-      min-height: 50vh;
-      max-height: 60vh;
       min-width: fit-content;
+      min-height: 60vh;
+      max-height: 80vh;
+      overflow: scroll;
       display: flex;
       padding: 1rem;
       margin-left: 1vw;
-      background-color: var(--gray-2);
-      border-radius: 1rem 0 0 1rem;
-      border-right: 2px groove;
-      box-shadow: $box-shadow;
-      -webkit-box-shadow: $box-shadowWB;
-      -moz-box-shadow: $box-shadowMB;
-      overflow: scroll;
-      position: relative;
-      border-right: 1px groove;
+      border-bottom-left-radius: .3em;
+      border-top-left-radius: .3em;
       .listOffers {
         width: 25vw;
         display: flex;
@@ -133,31 +136,31 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
           width: 100%;
           height: 100%;
           border: none;
-          border-radius: 1rem;
-          background: none;
+          border-radius: .3em;
         }
         .singleOffer {
           display: flex;
           justify-content: flex-start;
           margin: 1vh 1vw;
-          border: 2px solid var(--primary);
+          border: 1px solid var(--primary);
           background-color: var(--backgroundColor);
-          border-radius: 1rem;
+          border-radius: .3em;
           transition: all 300ms ease-in-out;
-          box-shadow: $box-shadow;
-          -webkit-box-shadow: $box-shadowWB;
-          -moz-box-shadow: $box-shadowMB;
+
           &:hover {
             transform: scale(1.05);
           }
+
           &:visited {
             background-color: lightgray;
           }
+
           h5 {
             font-size: medium;
             margin-top: 1vh;
             margin-bottom: 0;
           }
+
           p {
             font-size: small;
             padding: 0 0.5vw 0 0.5vw;
@@ -168,9 +171,11 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
         }
       }
     }
+
     .offers::-webkit-scrollbar {
       display: none;
     }
+
     .detailledOffer::-webkit-scrollbar {
       display: none;
     }
@@ -178,47 +183,50 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
     .detailledOffer {
       width: 100%;
       min-height: 50vh;
-      border: 2px solid;
       border: 2px solid var(--secondary);
       border-left: 2px groove;
-      border-radius: 0 1rem 1rem 0;
+      border-radius: .3em;
       padding: 1rem;
       overflow: scroll;
       position: relative;
-      box-shadow: $box-shadow;
-      -webkit-box-shadow: $box-shadowWB;
-      -moz-box-shadow: $box-shadowMB;
       .visualize {
         border: none;
         background: none;
         cursor: pointer;
         transition: all 50ms ease-in-out;
+
         &:hover {
           font-weight: bold;
         }
       }
+
       .smallInformations {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
         align-items: center;
         margin: 3vh 8vw;
+
         p {
           margin: 1.5vh 1.5vw;
         }
       }
     }
+
     .blank {
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
+        margin: auto;
     }
   }
 }
+
 .blur {
   filter: blur(4px);
 }
+
 .iblur {
   filter: blur(8px);
 }
@@ -228,12 +236,14 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
     min-height: 100vh;
     min-width: 100vw;
     margin-bottom: 10vh;
+
     .results {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       margin: auto;
+
       .filters {
         display: flex;
         border: 2px solid black;
@@ -242,10 +252,12 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
         max-height: 80vh;
         flex-direction: column;
         min-height: 40vh;
+
         .title {
           display: block;
           margin: 2vh;
         }
+
         .form {
           width: 100%;
           height: 100%;
@@ -261,10 +273,12 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
             align-items: center;
             margin: 2vh 0;
           }
+
           label {
             width: 100%;
             margin: 1vh 0;
           }
+
           input,
           select {
             max-width: 45vw;
@@ -278,49 +292,58 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
             -webkit-box-shadow: $box-shadowWB;
             -moz-box-shadow: $box-shadowMB;
           }
+
           input[type="range"] {
             padding: 0;
             box-shadow: none;
             margin: 1vh 0 0 1vw;
           }
+
           .city {
             width: 80%;
             display: flex;
             flex-direction: column;
+
             input {
               background-color: #f0f0f0a6;
               border: none;
               border-radius: 0.5rem;
             }
           }
+
           .salary {
             display: flex;
             flex-direction: column;
           }
+
           .jobPlace {
             display: flex;
             flex-direction: column;
             align-self: center;
             margin-top: 3vh;
           }
+
           .jobTypes {
             display: flex;
             flex-direction: column;
             align-self: center;
           }
+
           .Rsalary {
             margin: 0;
           }
+
           .buttons {
             width: 100%;
+
             button {
-              margin: 2vh 1vw 2vh 1vw;
-              border-radius: 0.5rem;
-              background-color: white;
+              margin: 2vh 1vw;
+              border-radius: 0.5px;
             }
           }
         }
       }
+
       .offers {
         width: 90vw;
         min-height: 10vh;
@@ -332,12 +355,14 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
         border-radius: 1rem 1rem 0 0;
         flex-wrap: wrap;
         margin-top: 2vh;
+
         .listOffers {
           display: flex;
           justify-content: center;
           align-items: center;
           width: 100%;
           flex-direction: column;
+
           button {
             width: 100%;
             height: 100%;
@@ -345,6 +370,7 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
             border-radius: 1rem;
             background: none;
           }
+
           .singleOffer {
             display: flex;
             max-width: 90%;
@@ -356,20 +382,25 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
             box-shadow: $box-shadow;
             -webkit-box-shadow: $box-shadowWB;
             -moz-box-shadow: $box-shadowMB;
+
             &:hover {
               transform: scale(1.05);
             }
+
             &:visited {
               background-color: lightgray;
             }
+
             &:active {
               background-color: lightgray;
             }
+
             h5 {
               font-size: medium;
               margin-top: 1vh;
               margin-bottom: 0;
             }
+
             p {
               font-size: small;
               padding: 0 0.5vw 0 0.5vw;
@@ -380,6 +411,7 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
           }
         }
       }
+
       .detailledOffer {
         width: 90vw;
         height: fit-content;
@@ -387,14 +419,17 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
         border-top: 2px groove;
         border-radius: 0 0 1rem 1rem;
         padding: 1rem 1rem;
+
         h3 {
           margin-top: 2rem;
         }
+
         .visualize {
           border: none;
           background: none;
           cursor: pointer;
           transition: all 50ms ease-in-out;
+
           &:hover {
             font-weight: bold;
           }

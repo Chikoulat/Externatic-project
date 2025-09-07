@@ -32,7 +32,7 @@ function Gallery() {
         Ces Entreprises nous ont fait confiance
       </h2>
       <AliceCarousel
-        mouseTracking
+        disableButtonsControls
         items={items}
         responsive={responsive}
         controlsStrategy="alternate"

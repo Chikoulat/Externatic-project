@@ -1,12 +1,15 @@
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
-import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import { jwtDecode } from "jwt-decode";
 import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/footer/Footer";
 import ErrorBoundary from "./ErrorBoundary";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
+import getCandidate from "./services/API/candidate/getCandidate";
+import getCompany from "./services/API/company/getCompany";
+import getAdmin from "./services/API/admin/getAdmin";
 
 function App() {
   const [auth, setAuth] = useState({});
@@ -14,42 +17,34 @@ function App() {
   const [user, setUser] = useState();
   const [type, setType] = useState();
 
-  useEffect(() => {
-    if (auth?.userTypeId === 1) {
-      axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/candidate/`, {
-          headers: { Authorization: `Bearer ${auth?.token}` },
-        })
-        .then((res) => {
-          if (res.data && res.data.length >= 2) {
-            setUser(res.data[0]);
-            setType(res.data[1]);
-          }
-        });
-    } else if (auth?.userTypeId === 2) {
-      axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/company/`, {
-          headers: { Authorization: `Bearer ${auth?.token}` },
-        })
-        .then((res) => {
-          if (res.data) {
-            setUser(res.data[0]);
-            setType(res.data[1]);
-          }
-        });
-    } else if (auth?.userTypeId === 3) {
-      axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/admin/`, {
-          headers: { Authorization: `Bearer ${auth?.token}` },
-        })
-        .then((res) => {
-          if (res.data && res.data.length >= 2) {
-            setUser(res.data[0]);
-            setType(res.data[1]);
-          }
-        });
+  if (Object.keys(auth).length === 0) {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decoded = jwtDecode(token);
+      const now = Date.now().valueOf() / 1000;
+      if (typeof decoded.exp !== "undefined" && decoded.exp < now) {
+        localStorage.removeItem("token");
+        toast.info("Votre session a expiré, veuillez vous reconnecter.");
+      }
+      const userData = {
+        email: decoded.email,
+        userTypeId: decoded.role,
+      };
+      setAuth({ ...userData, token });
     }
-  }, [auth?.token, type]);
+  }
+
+  useEffect(() => {
+    if (auth?.token) {
+      if (auth.userTypeId === 1) {
+        getCandidate(auth?.token, setType, setUser);
+      } else if (auth.userTypeId === 2) {
+        getCompany(auth?.token, setType, setUser);
+      } else if (auth.userTypeId === 3) {
+        getAdmin(auth?.token, setType, setUser);
+      }
+    }
+  }, [auth?.token, auth?.userTypeId]);
 
   return (
     <div>

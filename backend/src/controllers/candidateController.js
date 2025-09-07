@@ -28,8 +28,8 @@ const read = async (req, res, next) => {
     next(err);
   }
 };
-// PUT
 
+// PUT
 const edit = async (req, res, next) => {
   const { firstname, lastname, dateOfBirth, wantedSalary, city, country } =
     req.body;

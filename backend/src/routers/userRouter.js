@@ -7,7 +7,9 @@ const { validateUserData } = require("../middlewares/validateUser");
 
 const { browseFilters } = require("../controllers/jobController");
 
-const { hash, verifyToken } = require("../middlewares/hashPassword");
+const { hash } = require("../middlewares/hashPassword");
+
+const { verifyToken } = require("../middlewares/verifyToken");
 
 // POST
 router.post("/", validateUserData, hash, add);

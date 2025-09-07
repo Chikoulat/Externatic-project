@@ -8,7 +8,7 @@ const {
   edit,
   add,
 } = require("../controllers/candidateController");
-const { verifyToken } = require("../middlewares/hashPassword");
+const { verifyToken } = require("../middlewares/verifyToken");
 
 // POST
 router.post("/", add);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import style from "./signUp.module.scss";
-import InscriptionCandidat from "../../components/InscriptionCandidat";
-import InscriptionEntreprise from "../../components/InscriptionEntreprise";
+import InscriptionCandidat from "../../components/signUp/candidat/InscriptionCandidat";
+import InscriptionEntreprise from "../../components/signUp/company/InscriptionEntreprise";
 
 function SignUp() {
   const [form, setForm] = useState("candidate");

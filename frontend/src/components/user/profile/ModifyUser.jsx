@@ -1,18 +1,23 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { React, useRef, useState } from "react";
-import axios from "axios";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
 import PropTypes from "prop-types";
+import useUpdateUser from "../../../services/API/user/updateUser";
+import useUpdateCompany from "../../../services/API/company/putCompany";
 import hide from "../../../assets/images/hide.png";
 import show from "../../../assets/images/show.png";
 import success from "../../../assets/images/success.png";
-import style from "../../inscriptionCandidat.module.scss";
+import style from "../../signUp/candidat/inscriptionCandidat.module.scss";
+import useDeleteUser from "../../../services/API/user/deleteUser";
 
-function ModifyUser({ user, auth, setAuth, type, setType }) {
+function ModifyUser({ user, setAuth, type, setType }) {
+  const updateUser = useUpdateUser();
+  const updateCompany = useUpdateCompany();
+  const deleteUser = useDeleteUser();
   const {
     register,
     handleSubmit,
@@ -34,55 +39,22 @@ function ModifyUser({ user, auth, setAuth, type, setType }) {
   const options = { multi: true };
   passwordRef.current = watch("password", "");
 
-  const formatDateString = (dateString) => {
-    const date = new Date(dateString);
-    return date.toISOString().slice(0, 10);
-  };
-
   const onSubmit = async (data) => {
     try {
-      const userResponse = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/user`,
-        {
-          email: data.email || user.email,
-          password: data.password || user.password,
-          contactNumber: data.contact_number || user.contact_number,
-          smsNotificationActive: data.smsNotificationActive || false,
-          emailNotificationActive: data.emailNotificationActive || false,
-          image: data.image || user.image,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${auth.token}`,
-          },
-        }
-      );
+      await updateUser(data, user);
 
       if (user.type === "entreprise" && data.image) {
-        axios.put(
-          `${import.meta.env.VITE_BACKEND_URL}/company`,
-          {
-            name: type.name,
-            image: data.image,
-            description: type.description,
-            website: type.website,
-            establishmentDate: formatDateString(type.establishmentDate),
-          },
-          {
-            headers: { Authorization: `Bearer ${auth.token}` },
-          }
-        );
+        await updateCompany(type, data);
         setType({ ...type, data });
       }
 
-      if (userResponse.status === 200) {
-        toast.success("Votre profil a bien été modifié.");
-        if (data.email || data.password) {
-          setTimeout(() => {
-            setAuth(null);
-            navigate("/connexion");
-          }, 2000);
-        }
+      toast.success("Votre profil a bien été modifié.");
+      if (data.email || data.password) {
+        setTimeout(() => {
+          setAuth(null);
+          localStorage.removeItem("token");
+          navigate("/connexion");
+        }, 2000);
       }
     } catch (e) {
       console.error(e);
@@ -92,22 +64,13 @@ function ModifyUser({ user, auth, setAuth, type, setType }) {
 
   const handleDelete = async () => {
     try {
-      const userDelete = await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/user`,
-        {
-          headers: {
-            Authorization: `Bearer ${auth.token}`,
-          },
-        }
-      );
-
-      if (userDelete.status === 200) {
-        toast.success("Votre profil a bien été supprimé.");
-        setTimeout(() => {
-          setAuth(null);
-          navigate("/accueil");
-        }, 2000);
-      }
+      await deleteUser;
+      toast.success("Votre profil a bien été supprimé.");
+      setTimeout(() => {
+        setAuth(null);
+        localStorage.removeItem("token");
+        navigate("/accueil");
+      }, 2000);
     } catch (e) {
       console.error(e);
       toast.error("Une erreur est survenue. Veuillez réessayer.");
@@ -164,9 +127,17 @@ function ModifyUser({ user, auth, setAuth, type, setType }) {
                   className={`${style.showPassword}`}
                 >
                   {showPassword ? (
-                    <img src={show} alt="show" />
+                    <img
+                      src={show}
+                      alt="show"
+                      className={`${style.lockUpdate}`}
+                    />
                   ) : (
-                    <img src={hide} alt="hide" />
+                    <img
+                      src={hide}
+                      alt="hide"
+                      className={`${style.lockUpdate}`}
+                    />
                   )}
                 </button>
               </div>
@@ -175,7 +146,7 @@ function ModifyUser({ user, auth, setAuth, type, setType }) {
             <p className={`${style.p}`}>Confirmez mot de passe :</p>
             <input
               className={`${style.input}`}
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="confirmPassword"
               autoComplete="true"
               {...register("confirmPassword", {
@@ -288,9 +259,6 @@ ModifyUser.propTypes = {
     image: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     contact_number: PropTypes.string.isRequired,
-  }).isRequired,
-  auth: PropTypes.shape({
-    token: PropTypes.string.isRequired,
   }).isRequired,
   setAuth: PropTypes.func.isRequired,
   type: PropTypes.shape({

@@ -5,7 +5,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 // Build the path to the schema SQL file
-const schemaFK = path.join(__dirname, "database", "schemaFK.sql");
+const schemaFK = path.join(__dirname, "database", "schema.sql");
 
 // Get database connection details from .env file
 const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
@@ -43,4 +43,4 @@ const migrate = async () => {
 };
 
 // Run the migration function
-migrate();
+migrate().then();

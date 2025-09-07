@@ -9,7 +9,7 @@ const {
   remove,
 } = require("../controllers/candidateDegreeController");
 
-const { verifyToken } = require("../middlewares/hashPassword");
+const { verifyToken } = require("../middlewares/verifyToken");
 
 // GET
 
@@ -18,7 +18,7 @@ router.get("/", verifyToken, read);
 
 // POST
 
-router.post("/", verifyToken, add);
+router.post("/", add);
 
 // DELETE
 

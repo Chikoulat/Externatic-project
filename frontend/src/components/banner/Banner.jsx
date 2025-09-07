@@ -10,13 +10,14 @@ function Banner({ count }) {
       <h1>
         <span>{count.OffersAvailable}</span> offres d'emploi disponibles
       </h1>
-      <div>
-        <HomeSearchBar />
-      </div>
+      <HomeSearchBar />
     </section>
   );
 }
 Banner.propTypes = {
-  count: PropTypes.number.isRequired,
+  count: PropTypes.shape({
+    OffersAvailable: PropTypes.number.isRequired,
+  }).isRequired,
 };
+
 export default Banner;

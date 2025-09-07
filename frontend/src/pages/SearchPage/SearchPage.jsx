@@ -194,10 +194,18 @@ export default function SearchPage() {
               </select>
             </div>
             <div className={`${styles.buttons}`}>
-              <button type="button" onClick={handleFilters}>
+              <button
+                type="button"
+                onClick={handleFilters}
+                className="filterButton"
+              >
                 Appliquer filtres
               </button>
-              <button type="button" onClick={handleReset}>
+              <button
+                type="button"
+                onClick={handleReset}
+                className="filterButton"
+              >
                 Réinitialiser
               </button>
             </div>

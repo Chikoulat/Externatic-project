@@ -3,7 +3,7 @@ $box-shadowMB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
 $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
 
 .main {
-  width: 100vw;
+  width: fit-content;
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
@@ -13,16 +13,18 @@ $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
     position: relative;
 
     .searchBar {
-      width: 70vw;
+      width: 35em;
       background-color: #ffffff94;
       border: none;
       border-radius: 1rem;
       padding: 1.3rem 0 1.3rem 2rem;
-      background-color: #f0f0f0a6;
       font-size: medium;
       -moz-box-shadow: $box-shadowMB;
       -webkit-box-shadow: $box-shadowWB;
       box-shadow: $box-shadow;
+      @media (max-width: 900px) {
+        width: 20em;
+      }
     }
 
     button {

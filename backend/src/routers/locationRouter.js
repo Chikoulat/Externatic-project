@@ -9,7 +9,7 @@ const {
   remove,
 } = require("../controllers/locationController");
 
-const { verifyToken } = require("../middlewares/hashPassword");
+const { verifyToken } = require("../middlewares/verifyToken");
 
 // GET
 

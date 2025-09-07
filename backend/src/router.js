@@ -18,7 +18,7 @@ const authRouter = require("./routers/authRouter");
 const adminRouter = require("./routers/adminRouter");
 const candidateDegreeRouter = require("./routers/candidateDegreeRouter");
 const locationRouter = require("./routers/locationRouter");
-const { verifyToken } = require("./middlewares/hashPassword");
+const { verifyToken } = require("./middlewares/verifyToken");
 
 // ROUTES
 

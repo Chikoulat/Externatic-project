@@ -12,7 +12,7 @@ const {
   remove,
   browseCount,
 } = require("../controllers/jobController");
-const { verifyToken } = require("../middlewares/hashPassword");
+const { verifyToken } = require("../middlewares/verifyToken");
 
 // GET
 

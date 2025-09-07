@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const { read, create, remove } = require("../controllers/activityController");
-const { verifyToken } = require("../middlewares/hashPassword");
+const { verifyToken } = require("../middlewares/verifyToken");
 
 // GET
 router.get("/", verifyToken, read);

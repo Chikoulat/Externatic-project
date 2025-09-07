@@ -7,18 +7,20 @@ import styles from "./sideBar.module.scss";
 
 function SideBar({ bar, showSidebar, setAuth, auth }) {
   const navigate = useNavigate();
-
-  if (!auth?.token) {
-    navigate("/accueil");
-  }
+  const getToken = localStorage.getItem("token");
 
   const handleSignOut = () => {
     setAuth(null);
+    localStorage.removeItem("token");
     navigate("/accueil");
     setTimeout(() => {
       toast.success("Déconnexion réussie, à bientôt !");
     }, 1000);
   };
+
+  if (!auth?.token && !getToken) {
+    handleSignOut()
+  }
 
   return (
     <aside className={styles.aside}>

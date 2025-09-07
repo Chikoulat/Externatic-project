@@ -9,7 +9,7 @@ const {
   remove,
 } = require("../controllers/experienceController");
 
-const { verifyToken } = require("../middlewares/hashPassword");
+const { verifyToken } = require("../middlewares/verifyToken");
 
 // GET
 

@@ -9,22 +9,21 @@ import SideBar from "../sidebar/SideNavBar";
 import styles from "./navBar.module.scss";
 
 function NavBar({ auth, setAuth, type }) {
-  const [bar, setbar] = useState(false);
-  const showSidebar = () => setbar(!bar);
-
+  const [bar, setBar] = useState(false);
+  const showSidebar = () => setBar(!bar);
   return (
     <div className={`${styles.navBar}`}>
-      <nav className="d-flex justify-content-space-evenly align-items-center ">
+      <nav className="d-flex justify-content-space-evenly align-items-center">
         <div className={`${styles.linkLogo}`}>
           <Link to="/accueil">
             <img src={externaticLogo} alt="logo" />
           </Link>
-          {auth?.userTypeId === 1 ? (
+          {auth?.userTypeId === 1 && (
             <Link to="/recherche">
               {" "}
               <p>Trouver votre emploi</p>{" "}
             </Link>
-          ) : null}
+          )}
         </div>
 
         <div className="d-flex justify-content-flex-end flex-fill">
@@ -42,7 +41,11 @@ function NavBar({ auth, setAuth, type }) {
               </li>
               <li className="d-flex justify-content-space-center align-items-center">
                 <i>
-                  <FontAwesomeIcon icon={faBars} onClick={showSidebar} />
+                  <FontAwesomeIcon
+                    icon={faBars}
+                    onClick={showSidebar}
+                    size="xs"
+                  />
                 </i>
               </li>
               <li>

@@ -4,7 +4,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import style from "../../inscriptionCandidat.module.scss";
+import style from "../../signUp/candidat/inscriptionCandidat.module.scss";
 
 function ModifyCandidate({ type, setType, auth }) {
   const {

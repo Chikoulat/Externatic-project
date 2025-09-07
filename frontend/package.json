@@ -14,6 +14,7 @@
     "@hookform/error-message": "^2.0.1",
     "@vitejs/plugin-react": "^4.2.1",
     "axios": "^1.6.5",
+    "jwt-decode": "^4.0.0",
     "prop-types": "^15.8.1",
     "react-alice-carousel": "^2.8.0",
     "react-datepicker": "^4.25.0",

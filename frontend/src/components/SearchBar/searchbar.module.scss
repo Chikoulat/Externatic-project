@@ -3,37 +3,27 @@ $box-shadowMB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
 $box-shadowWB: 0px 6px 5px 0px rgba(0, 0, 0, 0.3);
 
 .main {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  flex-wrap: nowrap;
+  width: 100%;
   margin: 2em auto 2em auto;
-
+  padding: 0 1.5em;
   form {
     position: relative;
-
     .searchBar {
-      width: 90vw;
-      background-color: #ffffff94;
-      border: none;
-      border-radius: 1rem;
+      width: 30em;
+      border: solid .5px #ca2061;
+      border-radius: .3em;
       padding: 1.3rem 0 1.3rem 2rem;
-      background-color: #f0f0f0a6;
       font-size: medium;
-      -moz-box-shadow: $box-shadowMB;
-      -webkit-box-shadow: $box-shadowWB;
-      box-shadow: $box-shadow;
     }
 
     button {
       position: absolute;
-      top: 5px;
-      right: 6px;
-      background-color: #ca2061;
+      top: .3em;
+      left: 28.5em;
       padding: 1.2rem 1.5rem 1.2rem 1.5rem;
       border: none;
       border-radius: 1rem;
-      color: #fff;
+      color: #ca2061;
       text-align: center;
       align-content: center;
       font-size: 1.5rem;

@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const { read, edit, add, remove } = require("../controllers/degreeController");
-const { verifyToken } = require("../middlewares/hashPassword");
+const { verifyToken } = require("../middlewares/verifyToken");
 
 // GET
 

@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import axios from "axios";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import HomePage from "./pages/HomePage";
+import MainHomePage from "./components/MainHomePage";
 import UserProfil from "./components/user/UserProfil";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import UserActivity from "./components/user/UserActivity";
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/accueil",
-        element: <HomePage />,
+        element: <MainHomePage />,
         loader: async () => {
           const job = await axios
             .get(`${import.meta.env.VITE_BACKEND_URL}/job`)

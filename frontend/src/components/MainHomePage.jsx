@@ -1,9 +1,10 @@
-import PropTypes from "prop-types";
+import { useLoaderData } from "react-router-dom";
 import Banner from "./banner/Banner";
 import JobOffers from "./jobOffers/JobOffers";
 import Gallery from "./carousel/Gallery";
 
-function MainHomePage({ job, count }) {
+function MainHomePage() {
+  const { job, count } = useLoaderData();
   return (
     <div>
       <Banner count={count} />
@@ -12,8 +13,4 @@ function MainHomePage({ job, count }) {
     </div>
   );
 }
-MainHomePage.propTypes = {
-  job: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  count: PropTypes.shape(PropTypes.number).isRequired,
-};
 export default MainHomePage;

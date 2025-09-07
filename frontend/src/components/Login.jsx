@@ -3,14 +3,13 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import axios from "axios";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import hide from "../assets/images/hide.png";
 import show from "../assets/images/show.png";
 import style from "../assets/styles/login.module.scss";
+import useLogin from "../services/API/auth/postLogin";
 
 function Login() {
-  const { setAuth } = useOutletContext();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const {
@@ -18,34 +17,28 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const login = useLogin();
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/login`,
-        data
-      );
-      setAuth(res.data);
-      if (res.data) {
-        setTimeout(() => {
-          navigate("/accueil");
-        }, 1000);
-      }
-
+      await login(data);
       toast.success("Connexion réussie, bienvenue !");
+      setTimeout(() => {
+        navigate("/accueil");
+      }, 1000);
     } catch (error) {
       toast.error(error.response?.data?.message);
     }
   };
 
   return (
-    <div className={`${style.profileconnexion}`}>
+    <div className={`${style.profileConnexion}`}>
       <h3 className={`${style.h3}`}>Bienvenue sur Externatic</h3>
       <div className={`${style.connexion}`}>
         <div>
           <p>Connecte toi</p>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={`${style.email}`}>
+            <div>
               <input
                 className={`${style.input}`}
                 type="email"
@@ -75,9 +68,9 @@ function Login() {
                   className={`${style.showPassword}`}
                 >
                   {showPassword ? (
-                    <img src={show} alt="show" />
+                    <img src={hide} alt="show" className={`${style.lock}`} />
                   ) : (
-                    <img src={hide} alt="hide" />
+                    <img src={show} alt="hide" className={`${style.lock}`} />
                   )}
                 </button>
               </div>
@@ -100,13 +93,11 @@ function Login() {
           </button>
         </div>
 
-        <div>
-          <img
-            className={`${style.loginPicture}`}
-            src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
-            alt="login"
-          />
-        </div>
+        <img
+          className={`${style.loginPicture}`}
+          src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
+          alt="login"
+        />
       </div>
     </div>
   );

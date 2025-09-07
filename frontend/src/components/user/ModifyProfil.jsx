@@ -10,13 +10,7 @@ function ModifyProfil() {
 
   return (
     <div className={`${style.modify}`}>
-      <ModifyUser
-        user={user}
-        auth={auth}
-        setAuth={setAuth}
-        type={type}
-        setType={setType}
-      />
+      <ModifyUser user={user} setAuth={setAuth} type={type} setType={setType} />
       {user.type === "candidat" ? (
         <ModifyCandidate type={type} setType={setType} auth={auth} />
       ) : (

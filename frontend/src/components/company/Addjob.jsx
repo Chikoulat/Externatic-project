@@ -4,7 +4,7 @@ import { React } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
-import style from "../inscriptionEntreprise.module.scss";
+import style from "../signUp/company/inscriptionEntreprise.module.scss";
 
 function Addjob({ auth, type, job, setJob, setShowAddJob }) {
   const {
