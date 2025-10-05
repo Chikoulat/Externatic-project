@@ -14,7 +14,7 @@ const { verifyToken } = require("../middlewares/verifyToken");
 // GET
 
 router.get("/", browse);
-router.get("/", verifyToken, read);
+router.get("/", read);
 
 // POST
 
