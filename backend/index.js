@@ -5,8 +5,8 @@ require("dotenv").config();
 const app = require("./src/app");
 
 app.use((req, res, next) => {
-  console.log("🔎 Incoming request:", req.method, req.url);
-  console.log("🔹 Headers:", req.headers);
+  console.info("🔎 Incoming request:", req.method, req.url);
+  console.info("🔹 Headers:", req.headers);
   next();
 });
 

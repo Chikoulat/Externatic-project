@@ -91,7 +91,7 @@ app.use(express.json());
 const router = require("./router");
 
 // Mount the API routes
-app.use("/", router);
+app.use("/api", router);
 
 /* ************************************************************************* */
 
