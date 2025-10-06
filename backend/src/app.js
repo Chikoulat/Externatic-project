@@ -128,9 +128,11 @@ app.use("/public/*", (req, res) => {
 
 app.use("*", (req, res) => {
   if (req.originalUrl.includes("assets")) {
-    res.sendFile(path.resolve(__dirname, `../../frontend/${req.originalUrl}`));
+    res.sendFile(
+      path.resolve(__dirname, `../../frontend/dist/${req.originalUrl}`)
+    );
   } else {
-    res.sendFile(path.resolve(__dirname, `../../frontend/index.html`));
+    res.sendFile(path.resolve(__dirname, `../../frontend/dist/index.html`));
   }
 });
 
