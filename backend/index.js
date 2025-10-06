@@ -4,6 +4,12 @@ require("dotenv").config();
 // Import the Express application from src/app.js
 const app = require("./src/app");
 
+app.use((req, res, next) => {
+  console.log("🔎 Incoming request:", req.method, req.url);
+  console.log("🔹 Headers:", req.headers);
+  next();
+});
+
 // Get the port from the environment variables
 const port = process.env.APP_PORT;
 
