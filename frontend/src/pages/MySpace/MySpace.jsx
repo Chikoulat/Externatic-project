@@ -10,7 +10,7 @@ export default function MySpace() {
 
   useEffect(() => {
     if (!auth?.token) {
-      navigate("/accueil");
+      navigate("/");
     }
   }, []);
 

@@ -69,7 +69,7 @@ function ModifyUser({ user, setAuth, type, setType }) {
       setTimeout(() => {
         setAuth(null);
         localStorage.removeItem("token");
-        navigate("/accueil");
+        navigate("/");
       }, 2000);
     } catch (e) {
       console.error(e);

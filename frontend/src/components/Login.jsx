@@ -24,7 +24,7 @@ function Login() {
       await login(data);
       toast.success("Connexion réussie, bienvenue !");
       setTimeout(() => {
-        navigate("/accueil");
+        navigate("/");
       }, 1000);
     } catch (error) {
       toast.error(error.response?.data?.message);

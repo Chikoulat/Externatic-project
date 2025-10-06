@@ -10,7 +10,7 @@ function UserMessage() {
 
   useEffect(() => {
     if (!auth?.token) {
-      navigate("/accueil");
+      navigate("/");
     }
   }, []);
 

@@ -7,7 +7,7 @@ function NotFound() {
 
   useEffect(() => {
     setTimeout(() => {
-      navigate("/accueil");
+      navigate("/");
     }, 5000);
   }, []);
 
@@ -15,7 +15,7 @@ function NotFound() {
     <div className={`${style.Error404}`}>
       <h1>
         404 NOT FOUND, You'll be redirect to the homepage or click{" "}
-        <Link to="/accueil">
+        <Link to="/">
           <u>HERE</u>
         </Link>
       </h1>

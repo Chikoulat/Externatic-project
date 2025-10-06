@@ -15,7 +15,7 @@ function NavBar({ auth, setAuth, type }) {
     <div className={`${styles.navBar}`}>
       <nav className="d-flex">
         <div className={`${styles.linkLogo}`}>
-          <Link to="/accueil">
+          <Link to="">
             <img src={externaticLogo} alt="logo" />
           </Link>
           {auth?.userTypeId === 1 && (

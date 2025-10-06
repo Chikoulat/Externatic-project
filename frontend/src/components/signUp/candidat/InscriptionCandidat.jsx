@@ -66,7 +66,7 @@ export default function InscriptionCandidat() {
 
       toast.success("Votre inscription a bien été prise en compte.");
       setTimeout(() => {
-        navigate("/accueil");
+        navigate("/");
       }, 2000);
     } catch (e) {
       console.error(e);

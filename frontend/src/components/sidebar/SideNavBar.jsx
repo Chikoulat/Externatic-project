@@ -12,7 +12,7 @@ function SideBar({ bar, showSidebar, setAuth, auth }) {
   const handleSignOut = () => {
     setAuth(null);
     localStorage.removeItem("token");
-    navigate("/accueil");
+    navigate("/");
     setTimeout(() => {
       toast.success("Déconnexion réussie, à bientôt !");
     }, 1000);
