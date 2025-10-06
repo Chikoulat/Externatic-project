@@ -6,7 +6,7 @@ html {
   border: solid 0.25em;
   border-radius: 0.75em;
   display: flex;
-  gap: 4em;
+
   padding: 3em 5em;
   margin: 0 0 3em 0;
   background-color: #f5f5f5;
@@ -15,19 +15,26 @@ html {
     gap: 2em;
     padding: 2em 1em;
     border-bottom: 1em solid var(--gray-2);
+    font-size: 80%;
   }
 }
 
 .sideActivity {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-self: flex-start;
+  @media (max-width: 768px) {
+   padding: .5em 0;
+  }
+}
+
+.sideButton{
+  border-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
 }
 
 .selectedActivity {
   font: 120% jost;
-
+  width: 50%;
   @media (max-width: 768px) {
     font-size: 100%;
   }
@@ -40,15 +47,9 @@ html {
   border-style: none;
   border-radius: 0.4em;
   padding: 0.8em 1em;
-  display: flex;
-  align-items: center;
-  margin: 1em;
 
   @media (max-width: 768px) {
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1em;
+    font: 90% jost;
+    padding: 0.5em 0.5em;
   }
 }

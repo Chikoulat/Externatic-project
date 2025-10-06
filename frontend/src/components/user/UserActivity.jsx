@@ -53,17 +53,19 @@ function UserActivity() {
         <p>Vous n'avez pas de candidature pour le moment.</p>
       ) : (
         <>
-          <div className={`${style.sideActivity}`}>
+          <div>
             {Array.isArray(activityUser) &&
               activityUser.map((a) => (
-                <div key={a.id}>
-                  <NavLink
+                <div key={a.id} className={style.sideActivity}>
+                  <button
+                    type="button"
                     onClick={() => {
                       singleOffer(a.id);
                     }}
+                    className={style.sideButton}
                   >
                     <h3>{a.title}</h3>
-                  </NavLink>
+                  </button>
                   <h4>{a.type}</h4>
                   <h4>{formatDateString(a.applyDate)}</h4>
                   <hr />

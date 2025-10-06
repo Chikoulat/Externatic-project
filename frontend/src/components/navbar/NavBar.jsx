@@ -13,7 +13,7 @@ function NavBar({ auth, setAuth, type }) {
   const showSidebar = () => setBar(!bar);
   return (
     <div className={`${styles.navBar}`}>
-      <nav className="d-flex justify-content-space-evenly align-items-center">
+      <nav className="d-flex">
         <div className={`${styles.linkLogo}`}>
           <Link to="/accueil">
             <img src={externaticLogo} alt="logo" />
@@ -21,16 +21,18 @@ function NavBar({ auth, setAuth, type }) {
           {auth?.userTypeId === 1 && (
             <Link to="/recherche">
               {" "}
-              <p>Trouver votre emploi</p>{" "}
+              <p className={styles.navText}>Trouver votre emploi</p>{" "}
             </Link>
           )}
         </div>
 
         <div className="d-flex justify-content-flex-end flex-fill">
           {auth?.token ? (
-            <ul className=" d-flex align-items-center ">
+            <ul className="d-flex align-items-center">
               <li>
-                <p>Bienvenue {type && (type.firstname || type.name)}</p>
+                <p className={styles.navText}>
+                  Bienvenue {type && (type.firstname || type.name)}
+                </p>
               </li>
               <li>
                 <img

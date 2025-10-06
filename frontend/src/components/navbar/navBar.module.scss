@@ -6,7 +6,7 @@
     gap: 4rem;
     padding: 0;
     ul {
-      gap: 4em;
+      gap: 2em;
       li {
         i {
           font-size: 5rem;
@@ -19,6 +19,13 @@
     img {
       max-width: 25rem;
     }
+  }
+}
+
+.navText{
+  @media (max-width: 768px) {
+    width: 80%;
+    font-size: 80%;
   }
 }
 

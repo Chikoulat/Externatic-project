@@ -10,15 +10,12 @@ function JobOffers({ job }) {
       <h1 className="my-30">Nos dernières offres</h1>
       <section className={`p-20 ${styles.jobOffers}`}>
         {job.map((j) => (
-          <div
-            key={j.id}
-            className={`${styles.jobOffer}`}
-          >
+          <div key={j.id} className={`${styles.jobOffer}`}>
             <div className={`${styles.imgContainer}`}>
               <img src={j.image} alt="logo" />
             </div>
             <div className={`${styles.jobOfferTitle}`}>
-              <h3 className="mb-10">{j.title}</h3>
+              <h4>{j.title}</h4>
               <p>{j.type}</p>
               <p>{j.city}</p>
               <NavLink to={`/offre/${j.id}`}>Voir</NavLink>

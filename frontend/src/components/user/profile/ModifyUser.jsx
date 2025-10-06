@@ -76,7 +76,6 @@ function ModifyUser({ user, setAuth, type, setType }) {
       toast.error("Une erreur est survenue. Veuillez réessayer.");
     }
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <section className={`${style.signupCandidate}`}>
