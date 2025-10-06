@@ -27,7 +27,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/accueil",
+        path: "/",
         element: <MainHomePage />,
         loader: async () => {
           const job = await axios
