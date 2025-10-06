@@ -31,7 +31,11 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL, process.env.FRONTEND_NET_URL], // Allow requests from this origin
+    origin: [
+      process.env.FRONTEND_URL,
+      process.env.FRONTEND_NET_URL,
+      process.env.FRONTEND_PROD_URL,
+    ], // Allow requests from this origin
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
     credentials: true, // Allow cookies and credentials
   })
