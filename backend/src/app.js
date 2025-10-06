@@ -35,9 +35,10 @@ app.use(
       process.env.FRONTEND_URL,
       process.env.FRONTEND_NET_URL,
       process.env.FRONTEND_PROD_URL,
-    ], // Allow requests from this origin
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-    credentials: true, // Allow cookies and credentials
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
