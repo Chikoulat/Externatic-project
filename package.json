@@ -11,17 +11,17 @@
     "url": "git+https://github.com/wildcodeschool/js-template-fullstack.git"
   },
   "scripts": {
-    "postinstall": "\"husky install && cd ./frontend && npm install && cd ../backend && npm install\"",
+    "postinstall": "husky install && cd ./frontend && npm install && cd ../backend && npm install",
     "db:migrate": "cd ./backend && node migrate.js",
     "db:seed": "cd ./backend && node seed.js",
     "dev": "'concurrently -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm:dev-*\"'",
-    "dev-front": "\"cd ./frontend && npm run dev\"",
-    "dev-back": "\"cd ./backend && npm run dev\"",
+    "dev-front": "cd ./frontend && npm run dev",
+    "dev-back": "cd ./backend && npm run dev",
     "lint": "lint-staged",
     "prebuild": "npm install",
-    "build": "\"cd frontend && npm install && npm run build && cd ../backend && npm install\"",
-    "start": "\"cd ./backend && npm run start\"",
-    "clean": "\"rm -rf ./node_modules ./package-lock.json ./backend/node_modules ./backend/package-lock.json ./frontend/node_modules ./frontend/package-lock.json\""
+    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install",
+    "start": "cd ./backend && npm run start",
+    "clean": "rm -rf ./node_modules ./package-lock.json ./backend/node_modules ./backend/package-lock.json ./frontend/node_modules ./frontend/package-lock.json"
   },
   "keywords": [],
   "author": "Wild Code School",
