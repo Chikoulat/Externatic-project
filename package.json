@@ -11,7 +11,7 @@
     "url": "git+https://github.com/wildcodeschool/js-template-fullstack.git"
   },
   "scripts": {
-    "postinstall": "husky install && cd ./frontend && npm install && cd ../backend && npm install",
+    "postinstall": "cd ./frontend && npm install && cd ../backend && npm install",
     "db:migrate": "cd ./backend && node migrate.js",
     "db:seed": "cd ./backend && node seed.js",
     "dev": "'concurrently -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm:dev-*\"'",
